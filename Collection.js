@@ -11,7 +11,6 @@ const getArgs = (args) => {
   return args.filter((arg) => arg !== context)
 }
 
-
 module.exports = class Collection extends mixer.extends([Bindeable]) {
   constructor(values) {
     super()
@@ -26,13 +25,15 @@ module.exports = class Collection extends mixer.extends([Bindeable]) {
         Object.assign(headers, additionalHeaders)
       }
 
-      const response = await axios({
+      const axiosOptions = {
         ...options,
         ...this.axiosOptions,
-        method: 'POST',
+        method: 'post',
         withCredentials: true,
         headers,
-      })
+      }
+      
+      const response = await axios(axiosOptions)
       const result = response.data
       //console.log(action, ...args, result)
       return result
