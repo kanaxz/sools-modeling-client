@@ -50,7 +50,7 @@ module.exports = class Collection extends mixer.extends([Bindeable]) {
   }
 
   async apiRequest(action, body, options = {}) {
-    const url = `${this.url}/api/collections/${this.type.definition.pluralName}${action}`
+    const url = `${this.url}/collections/${this.type.definition.pluralName}${action}`
     //console.log(action, JSON.stringify(body, null, ' '), JSON.stringify(options, null, ' '))
 
     const { result } = await this.request({
